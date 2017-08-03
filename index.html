@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="title"></title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body ng-app="myApp">
+    <nav class="navbar navbar-default" ng-controller="commonCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">movieCat</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{'active' : currentClass == 'in_theaters' }" ng-click="currentClass = 'in_theaters' "><a href="#!/in_theaters/1" >正在热映</a></li>
+                    <li ng-class="{'active':currentClass=='coming_soon'}" ng-click="currentClass='coming_soon'"><a href="#!/coming_soon/1" >即将上映</a></li>
+                    <li ng-class="{'active':currentClass=='top250'}" ng-click="currentClass='top250'"><a href="#!/top250/1">Top250</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入搜索内容" ng-model="search_text">
+                    </div>
+                    <button type="button" ng-click="searchFn()" class="btn btn-default">搜索</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-view></div>
+    
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="js/app.js"></script>    
+    <script src="js/service.js"></script>
+    <script src="js/route.js"></script>
+    <script src="./in_theaters/in_theatersCtrl.js"></script>
+    <script src="./coming_soon/coming_soonCtrl.js"></script>
+    <script src="./search/searchCtrl.js"></script>
+    <script src="./top250/top250Ctrl.js"></script>
+</body>
+</html>
